@@ -1,0 +1,19 @@
+.counter {
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+
+    &__title {
+        line-height: 50px;
+    }
+
+    &__score {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        line-height: 50px;
+    }
+}

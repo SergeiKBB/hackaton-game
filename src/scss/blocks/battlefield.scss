@@ -1,0 +1,175 @@
+
+$cell-size: 30px;
+$img-size: 26px;
+$font-size: 18px;
+
+
+@keyframes explosion {
+
+    0% {
+        background: #5a2424;
+        left: 0px;
+        top: 0px;
+    }
+
+    50% {
+        background: #a33838;
+        left: 0px;
+        top: 0px;
+    }
+
+    100% {
+        background: #5a2424;
+        left: 0px;
+        top: 0px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.battlefield {
+    background-color: #008b8b;
+    border: 2px solid #8DEEEE;
+    font-weight: bold;
+    font-size: $font-size;
+    color: white;
+    text-align: center;
+
+    &__cell {
+        border: 2px solid #8DEEEE;
+        height: $cell-size;
+        width: $cell-size;
+        position: relative;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #dcdcdc;
+            border: 2px solid #d47272;
+            transition: all .1s ease-in-out;
+
+            &::after {
+                content: "";
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                width: $img-size;
+                height: $img-size;
+                background-color: #d47272;
+                mask: url('../img/target.svg') no-repeat center;
+            }
+        }
+
+        &_sea {
+            cursor: not-allowed;
+
+            &:after {
+                content: "";
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                width: $img-size;
+                height: $img-size;
+                background-color: #8DEEEE;
+                mask: url('../img/sea.svg') no-repeat center;
+            }
+
+            &:hover {
+                background-color: #008b8b;
+                border: 2px solid #525252;
+
+                &:after {
+                    content: "";
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    position: absolute;
+                    width: $img-size;
+                    height: $img-size;
+                    background-color: rgb(52, 71, 87);
+                    mask: url('../img/sea.svg') no-repeat center;
+                }
+            }
+        }
+
+        &_boat {
+            cursor: not-allowed;
+
+            &:after {
+                content: "";
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                width: $img-size;
+                height: $img-size;
+                background-color: #d47272;
+                mask: url('../img/explosion.svg') no-repeat center;
+            }
+
+            &:hover {
+                background-color: #008b8b;
+                border: 2px solid #525252;
+
+                &:after {
+                    content: "";
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    position: absolute;
+                    width: $img-size;
+                    height: $img-size;
+                    background-color: #5a2424;
+                    mask: url('../img/explosion.svg') no-repeat center;
+                }
+            }
+        }
+
+        &_explosion {
+            cursor: not-allowed;
+
+            &:after {
+                content: "";
+                top: 50%;
+                left: 50%;
+                position: absolute;
+                width: $img-size;
+                height: $img-size;
+                // background-color: #d47272;
+                mask: url('../img/cruise.svg') no-repeat center;
+                animation-name: explosion;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-play-state: running;
+            }
+
+            &:hover {
+                background-color: #008b8b;
+                border: 2px solid #525252;
+                &:after {
+                    content: "";
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(0%, 0%);
+                    position: absolute;
+                    width: $img-size;
+                    height: $img-size;
+                    background-color: #5a2424;
+                    mask: url('../img/cruise.svg') no-repeat center;
+                }
+            }
+        }
+    }
+}
